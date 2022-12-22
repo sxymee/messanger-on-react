@@ -1,6 +1,25 @@
 import React from 'react'
 
 export default function LeftBar(props) {
+
+	const [fileImg, setFileImg] = React.useState({})
+
+	const handleImageChange = (e)  => {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+			setFileImg({
+				imagePreviewUrl: reader.result
+			});
+    }
+    reader.readAsDataURL(file)
+		console.log(fileImg.imagePreviewUrl)
+  }
+
+
 	return (
 		<div className="left-bar">
 							<div className="left-bar-header">
@@ -32,6 +51,8 @@ export default function LeftBar(props) {
 											<img src="img/плюс.svg" width={20} alt="" />
 										</div>
 									</div>
+									<input className="fileInput" type="file" onChange={handleImageChange}/>
+									<img src={fileImg.imagePreviewUrl} width={20}/>
 									<div className="goBack" onClick={props.onClickBack}> <img height={50} width={25} src="img/left.svg" alt="left"/> </div>
 								</div>
 							</div>

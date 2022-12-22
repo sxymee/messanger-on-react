@@ -118,9 +118,9 @@ function App() {
 										userName={obj.userName}
 										userMessage={obj.userMessage}
 										userImg={obj.userImg}
-										onActivate = {(obj) => onActivateChat(obj)}
 										onAddToArchive = {(obj) => onAddToArchive(obj)}
 										onClickChat = {() => setRightElem(false)}
+										chatActivate = {(obj) => onActivateChat(obj)}
 										/>
 										)) : <Chat
 										onClickBack = {() => setRightElem(true)}
