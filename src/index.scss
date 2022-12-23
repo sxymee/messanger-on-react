@@ -480,6 +480,16 @@ body {
 	}
 }
 
+.urNick {
+	outline: none;
+	border: none;
+	height: 20px;
+	width: 80px;
+	background-color: rgb(233, 253, 252);
+	&:focus{
+		border: 1px solid rgba(102, 102, 102, 0.185);
+	}
+}
 
 .add-user {
 	width: 200px;

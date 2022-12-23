@@ -29,16 +29,20 @@ function App() {
 	const [settings, setSettings] = React.useState(false)
 
 	const [popup, setPopup] = React.useState(false)
-	
 
 	const [bg, setBG] = React.useState()
+
+	const [userInfo, setUserInfo] = React.useState([])
 
 	React.useEffect(() => {
 		axios.get('https://639aea76d514150197441c4f.mockapi.io/users')
 			.then((res) => setUsers(res.data))
 		axios.get('https://639aea76d514150197441c4f.mockapi.io/Archive')
 			.then((res) => setArchivedChats(res.data))
+		axios.get('https://639aea76d514150197441c4f.mockapi.io/userInfo')
+			.then((res) => setUserInfo(res.data))		
 	}, [])
+
 
 	const onAddToArchive = (obj) => {
 			axios.post('https://639aea76d514150197441c4f.mockapi.io/Archive', obj);
@@ -93,6 +97,7 @@ function App() {
 						onClickSettings = {() => setSettings(true)}
 						onClickArchive = {() => setArchive(!archive)}
 						onCreateChat = {() => onUseCreateChat()}
+						userInfo = {userInfo}
 						/>}
 						
 						<div className="right-bar">
